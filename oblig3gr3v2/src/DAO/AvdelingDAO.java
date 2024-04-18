@@ -90,13 +90,15 @@ public class AvdelingDAO {
 
     // uskikker om om denne er riktig
     // metode som endrer avdelingen til en ansatt
-    public void endreAvdeling(int ansatt_id, int avdeling_id){
+    public void endreAvdeling(int ansatt_id, int avdelings_id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         Ansatt ansatt = em.find(Ansatt.class, ansatt_id);
+        Avdeling avdeling = em.find(Avdeling.class, avdelings_id);
+
         try {
             tx.begin();
-            ansatt.setAvdelings_id(avdeling_id);
+            ansatt.setAvdeling(avdeling);
             tx.commit();
         } finally {
             em.close();

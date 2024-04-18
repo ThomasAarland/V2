@@ -3,6 +3,7 @@ package DAO;
 import java.util.List;
 
 import entity.Ansatt;
+import entity.Avdeling;
 import entity.Deltager;
 import entity.Prosjekt;
 import jakarta.persistence.EntityManager;
@@ -132,12 +133,19 @@ public class AnsattDAO {
             em.close();
         }
     }
-    public void leggInnEnNyAnsatt(Ansatt a) {
+    public void leggInnEnNyAnsatt(Ansatt a, int avdelings_id) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try {
             tx.begin();  //oppretter en ny rad i databasen
+
+            Avdeling avdeling = em.find(Avdeling.class, avdelings_id);
+            if (avdeling != null) {
+                a.setAvdeling(avdeling);
+            }
+
+            
             em.persist(a);
             tx.commit();
         } catch (Throwable e) {

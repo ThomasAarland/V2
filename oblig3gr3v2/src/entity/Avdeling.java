@@ -54,4 +54,6 @@ public class Avdeling {
     public Ansatt getAvdeling_sjef() {
         return avdeling_sjef;
     }
+    
+    
 }

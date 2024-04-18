@@ -25,7 +25,9 @@ public class UI {
             System.out.println("4. Oppdater en ansatts stilling og/eller lønn");
             System.out.println("5. Legg til en ny ansatt");
             System.out.println("6. Utlisting av ansatte i en avdeling");
-            System.out.println("7. Avslutt");
+            System.out.println("7. Endre en ansatts avdeling");
+            System.out.println("8. Avslutt");
+
 
 
 
@@ -111,37 +113,45 @@ public class UI {
                     System.out.println("Skriv inn ny ansatt fornavn: ");
                     String fornavn3 = scanner.nextLine();
                     System.out.println("Skriv inn ny ansatt etternavn: ");
-                    String ettenavn3 = scanner.nextLine();
-                    System.out.println("Skriv inn ny ansatt ansettelsesDato: ");
+                    String etternavn3 = scanner.nextLine();
+                    System.out.println("Skriv inn ny ansatt ansettelsesDato YYYY-MM-DD: ");
                     LocalDate ansettelsesDato3 = LocalDate.parse(scanner.nextLine());
                     System.out.println("Skriv inn ny ansatt stilling: ");
                     String stilling3 = scanner.nextLine();
                     System.out.println("Skriv inn ny ansatt måndes lønn: ");
                     double mndlonn3 = scanner.nextDouble();
+                    System.out.println("Skriv inn avdelings id: ");
+                    int avdelingsid3 = scanner.nextInt();
+                    scanner.nextLine();
 
 
                     Ansatt a3 = new Ansatt();
-                    // a.setAnsatt_id(id3);
                     a3.setBrukernavn(brukernavn3);
                     a3.setFornavn(fornavn3);
-                    a3.setEtternavn(ettenavn3);
+                    a3.setEtternavn(etternavn3);
                     a3.setAnsettelsesDato(ansettelsesDato3);
                     a3.setStilling(stilling3);
                     a3.setMlonn(mndlonn3);
-
-                    ansatt.leggInnEnNyAnsatt(a3);
+                    
+                    try {
+                        ansatt.leggInnEnNyAnsatt(a3, avdelingsid3);
+                        System.out.println("Ny ansatt registrert med suksess!");
+                    } catch (Exception e) {
+                        System.out.println("Det oppstod en feil under registrering av ny ansatt: " + e.getMessage());
+                    }
+                    
                     break;
 
                 case 6:
                     System.out.println("Skriv inn ønsket avdelings id: ");
                     int x = scanner.nextInt();
                     List<Ansatt> ansatte1 = avdeling.hentAlleAnsatteIAvdeling(x);
-                    Ansatt xy = ansatte1.get(1);
-                    Ansatt avdelingssjef = avdeling.avdelingssjef(xy.getAvdelings_id());
+
 
                     if (ansatte1.isEmpty()) {
                         System.out.println("Ingen ansatte funnet");
                     } else {
+                        Ansatt avdelingssjef = avdeling.avdelingssjef(x);
                         System.out.println("Alle ansatte i ønsket avdeling:");
                         for (Ansatt a6 : ansatte1) {
                             a6.skrivUt("");
@@ -151,11 +161,26 @@ public class UI {
                     }
                     break;
 
+
                 case 7:
+                    System.out.println("Skriv inn den ansattes id: ");
+                    int ansattId = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Skriv inn ID for den nye avdelingen: ");
+                    int nyAvdelingsId = Integer.parseInt(scanner.nextLine());
+
+                    try {
+                        avdeling.endreAvdeling(ansattId, nyAvdelingsId);
+                        System.out.println("Avdelingen for ansatt med ID " + ansattId + " har blitt oppdatert.");
+                    } catch (Exception e) {
+                        System.out.println("Kunne ikke endre avdeling for ansatt: " + e.getMessage());
+                    }
+                    break;
+                
+
+                case 8:
                     running = false;
                     System.out.println("Systemet avsluttet");
                     break;
-                
             }
         }
     }

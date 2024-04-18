@@ -31,19 +31,18 @@ public class Ansatt {
     private LocalDate ansettelsesDato;
     private String stilling;
     private double mlonn;
-    private int avdelings_id;
+    //private int avdelings_id;
 
     public Ansatt(){
 
     }
 
-    public Ansatt(String fornavn, String etternavn, LocalDate ansettelsesDato, String stilling, double mlonn, int avdelings_id){
+    public Ansatt(String fornavn, String etternavn, LocalDate ansettelsesDato, String stilling, double mlonn){
         this.fornavn = fornavn; 
         this.etternavn = etternavn; 
         this.ansettelsesDato = ansettelsesDato; 
         this.stilling = stilling; 
         this.mlonn = mlonn;
-        this.avdelings_id = avdelings_id;
     }
 
     @ManyToOne
@@ -125,7 +124,7 @@ public class Ansatt {
     }
 
     public void setAnsatt_id (int ansattId) {
-
+        
     }
 
     public List<Deltager> getDeltagere(){
@@ -135,13 +134,14 @@ public class Ansatt {
     public void setAnsettelsesDato(LocalDate ansettelsesDato) {
         this.ansettelsesDato = ansettelsesDato;
     }
-
-    public int getAvdelings_id() {
-        return avdelings_id;
+ 
+    public Avdeling getAvdeling() {
+        return avdeling;
     }
 
-    public void setAvdelings_id(int avdelings_id){
-        this.avdelings_id = avdelings_id;
+    public void setAvdeling(Avdeling avdeling){
+        this.avdeling = avdeling;
     }
-    
+
+
 }
