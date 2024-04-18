@@ -21,7 +21,7 @@ public class Deltager {
     // The value of the field Deltager.rolle is not usedJava(570425421)
     //??
     private String rolle; 
-    private int arbeidstimer = 0;
+    private int arbeidstimer;
 
     @ManyToOne
     @JoinColumn(name = "ansatt_id")
@@ -48,5 +48,4 @@ public class Deltager {
         System.out.printf("%sDeltagelse: %s %s, %s, %s, %d timer", inntrykk,
                 ansatt.getFornavn(), ansatt.getEtternavn(), prosjekt.getNavn(), rolle, arbeidstimer);        
     }   
-
 }

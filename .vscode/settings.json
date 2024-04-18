@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "oblig3gr3v2/lib/eclipselink-4.0.2.jar",
+        "oblig3gr3v2/lib/jakarta.persistence-api-3.1.0.jar",
+        "oblig3gr3v2/lib/postgresql-42.7.2.jar"
+    ]
+}
