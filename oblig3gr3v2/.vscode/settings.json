@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\liver\\DAT107\\Oblig3gr3\\lib\\eclipselink-4.0.2.jar",
+        "c:\\Users\\liver\\DAT107\\Oblig3gr3\\lib\\jakarta.persistence-api-3.1.0.jar",
+        "c:\\Users\\liver\\DAT107\\Oblig3gr3\\lib\\postgresql-42.7.2.jar"
+    ]
+}
