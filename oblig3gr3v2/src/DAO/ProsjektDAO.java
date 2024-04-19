@@ -11,7 +11,7 @@ import jakarta.persistence.TypedQuery;
 
 public class ProsjektDAO {
 
-    private EntityManagerFactory emf;
+    private static EntityManagerFactory emf;
 
     public ProsjektDAO() {
         emf = Persistence.createEntityManagerFactory("oblig3");
@@ -49,7 +49,7 @@ public class ProsjektDAO {
         }
     }
 
-    public List<Prosjekt> hentAlleProsjekt(){
+    public static List<Prosjekt> hentAlleProsjekt(){
         EntityManager em = emf.createEntityManager();
 
         try {

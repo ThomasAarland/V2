@@ -28,7 +28,7 @@ public class Prosjekt {
 
 
     public void skrivUt(String innrykk) {
-        System.out.printf("%sProsjekt nr %d: %s, %s", innrykk, prosjekt_id, prosjekt_navn, prosjekt_beskrivelse);
+        System.out.printf("%sProsjekt nr %d: %s, %s%n", innrykk, prosjekt_id, prosjekt_navn, prosjekt_beskrivelse);
     }
 
     public void skrivUtMedAnsatte() {

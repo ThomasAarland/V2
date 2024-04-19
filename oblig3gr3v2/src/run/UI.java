@@ -6,13 +6,16 @@ import java.util.Scanner;
 
 import DAO.AnsattDAO;
 import DAO.AvdelingDAO;
+import DAO.ProsjektDAO;
 import entity.Ansatt;
+import entity.Prosjekt;
 
 
 public class UI {
     public static void main(String[] args) {
         AnsattDAO ansatt = new AnsattDAO();
         AvdelingDAO avdeling = new AvdelingDAO();
+        ProsjektDAO prosjekt = new ProsjektDAO();
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -27,7 +30,7 @@ public class UI {
             System.out.println("6. Utlisting av ansatte i en avdeling");
             System.out.println("7. Endre en ansatts avdeling");
             System.out.println("8. Avslutt");
-
+            System.out.println("9. Se, leggtil eller endre prosjekter");
 
 
 
@@ -181,7 +184,62 @@ public class UI {
                     running = false;
                     System.out.println("Systemet avsluttet");
                     break;
-            }
+                
+                case 9:
+                System.out.println("For utlising av prosjekter skriv: 1 \n For oppdatering av prosjektnavn: 2 \n For oppdaterinig av prosjekt-beskrivelse: 3 \n For å legge til et nytt prosjekt: 4");
+                int valg2 = scanner.nextInt();
+                    scanner.nextLine(); 
+                    switch (valg2) {
+                        case 1:
+                            List<Prosjekt> prosjekter = ProsjektDAO.hentAlleProsjekt(); 
+                            if (!prosjekter.isEmpty()) {
+                                System.out.println("Alle prosjekt: ");
+                                for (Prosjekt p1 : prosjekter){
+                                    p1.skrivUt("");
+                                }
+                            }   else {
+                                System.out.println("Fant ingen prosjekter");
+                            }
+                            break;
+                        case 2: 
+                            System.out.println("Skriv inn prosjekt id: ");
+                            int pid1 = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.println("Skriv inn den nye navnet på prosjektet: ");
+                            String prosjektnavn1 = scanner.nextLine();
+                            prosjekt.oppdaterProsjektNavn(pid1, prosjektnavn1);
+                            System.out.println("oppdattering gjennomført");
+                            break;
+
+                        case 3:
+                            System.out.println("Skriv inn prosjekt id: ");
+                            int pid2 = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.println("Skriv inn den nye prosjekt-beskrivelsen: ");
+                            String prosjekbeskrivelse1= scanner.nextLine();
+                            prosjekt.oppdaterProsjektNavn(pid2, prosjekbeskrivelse1);
+                            System.out.println("oppdattering gjennomført");
+                            break;
+                        case 4:
+                            System.out.println("Skriv inn nytt prosjektnavn: ");
+                            String nynavn = scanner.nextLine();
+                            System.out.println("Skriv inn prosjektbeskrivelsen: ");
+                            String nybeskr = scanner.nextLine();
+                            Prosjekt p2 = new Prosjekt();
+                            p2.setProsjektNavn(nynavn);
+                            p2.setProsjektBeskrivelse(nybeskr);
+
+                            try {
+                                prosjekt.leggInnEtNyttProsjekt(p2);
+                                System.out.println("Ntt prosjekt registrert med suksess!");
+                            } catch (Exception e) {
+                                System.out.println("Det oppstod en feil under registrering av prosjektet: " + e.getMessage());
+                            }
+
+                        break;
+
+                    }
+                }
         }
     }
 }
