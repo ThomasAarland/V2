@@ -31,8 +31,6 @@ public class ProsjektDAO {
         return prosjekt;
     }
 
-    // usikker på om den er rett, kopierte fra ansattDAO
-    // lag en metode som oppretter et nytt prosjekt:
     public void leggInnEtNyttProsjekt(Prosjekt p) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

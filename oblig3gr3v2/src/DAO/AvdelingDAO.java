@@ -49,9 +49,7 @@ public class AvdelingDAO {
     }
 
     
-    // usikker på om denne er riktig.
-    // skal hente og skrive ut alle avdelingene
-    // usikker på om den henter alle ansatte i avdeling...
+
     public List<Avdeling> hentAlleAvdelinger(){
         EntityManager em = emf.createEntityManager();
 
@@ -72,7 +70,6 @@ public class AvdelingDAO {
         
     }
 
-    // skal hente alle ansatte i en avdeling.
     public List<Ansatt> hentAlleAnsatteIAvdeling(int avdelings_id) {
         EntityManager em = emf.createEntityManager();
         Avdeling avdeling = em.find(Avdeling.class, avdelings_id);
@@ -88,8 +85,7 @@ public class AvdelingDAO {
         }
     }
 
-    // uskikker om om denne er riktig
-    // metode som endrer avdelingen til en ansatt
+
     public void endreAvdeling(int ansatt_id, int avdelings_id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
