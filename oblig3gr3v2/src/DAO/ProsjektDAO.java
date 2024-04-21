@@ -69,7 +69,7 @@ public class ProsjektDAO {
             Prosjekt nyBeskrivelse = em.find(Prosjekt.class, prosjekt_id);
 
             nyBeskrivelse.setProsjektBeskrivelse(prosjekt_beskrivelse);
-            tx.commit(); // usikker på om den er riktig plassert
+            tx.commit(); 
         } catch (Exception e) {
             e.printStackTrace();
             if (tx.isActive()) {
@@ -90,7 +90,7 @@ public class ProsjektDAO {
             Prosjekt Navn = em.find(Prosjekt.class, prosjekt_id);
 
             Navn.setProsjektNavn(navn);
-            tx.commit(); // usikker på om den er riktig plassert
+            tx.commit(); 
         } catch (Exception e) {
             e.printStackTrace();
             if (tx.isActive()) {

@@ -29,8 +29,8 @@ public class UI {
             System.out.println("5. Legg til en ny ansatt");
             System.out.println("6. Utlisting av ansatte i en avdeling");
             System.out.println("7. Endre en ansatts avdeling");
-            System.out.println("8. Avslutt");
-            System.out.println("9. Se, leggtil eller endre prosjekter");
+            System.out.println("8. Se, legg til eller endre prosjekter");
+            System.out.println("9. Avslutt");
 
 
 
@@ -180,13 +180,10 @@ public class UI {
                     break;
                 
 
-                case 8:
-                    running = false;
-                    System.out.println("Systemet avsluttet");
-                    break;
+
                 
-                case 9:
-                System.out.println("For utlising av prosjekter skriv: 1 \n For oppdatering av prosjektnavn: 2 \n For oppdaterinig av prosjekt-beskrivelse: 3 \n For å legge til et nytt prosjekt: 4");
+                case 8:
+                System.out.println(" For utlising av prosjekter skriv: 1 \n For oppdatering av prosjektnavn: 2 \n For oppdaterinig av prosjekt-beskrivelse: 3 \n For å legge til et nytt prosjekt: 4");
                 int valg2 = scanner.nextInt();
                     scanner.nextLine(); 
                     switch (valg2) {
@@ -231,11 +228,16 @@ public class UI {
 
                             try {
                                 prosjekt.leggInnEtNyttProsjekt(p2);
-                                System.out.println("Ntt prosjekt registrert med suksess!");
+                                System.out.println("Nytt prosjekt registrert med suksess!");
                             } catch (Exception e) {
                                 System.out.println("Det oppstod en feil under registrering av prosjektet: " + e.getMessage());
                             }
 
+                        break;
+
+                    case 9:
+                        running = false;
+                        System.out.println("Systemet avsluttet");
                         break;
 
                     }
